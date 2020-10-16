@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  cacti-web:    # The Postgres Database Service
+    image: krknopp/cacti:latest
+    restart: always
+    ports:
+      - 8070:80
+    environment:   # Username, password and database name variables
+      - TZ: Africa/Freetown
+    volumes:  # Volumes for scripts and related files you can add
+      - /opt/cacti/plugins:/opt/cacti/plugins
+      - /var/log:/var/log
+      - /opt/cacti/templates:/opt/cacti/templates
+      - /var/lib/mysql:/var/lib/mysql
+      - /opt/cacti/rra:/opt/cacti/rra
